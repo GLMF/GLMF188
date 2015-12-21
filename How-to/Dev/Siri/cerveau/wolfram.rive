@@ -1,0 +1,23 @@
+> object wolfram_alpha python
+    import tungsten
+    import goslate
+    APP_ID = 'GQQ7XQ-URKHWEHEJL'
+
+    query = ' '.join(args)
+    gs = goslate.Goslate()
+    query_en = gs.translate(query, "en", "fr")
+
+    client = tungsten.Tungsten(APP_ID)
+    result = client.query(query_en)
+
+    for pod in result.pods:
+        if pod.id == "Result":
+            return u'\n'.join(gs.translate(pod.format['plaintext'], "fr", "en"))
+
+    return u"Je n'ai pas de réponse ou la réponse est trop complexe"
+< object
+
+
++ dis[-]moi *
+- <call>wolfram_alpha <star></call>
+
